@@ -21,7 +21,7 @@ if (leadsFromLocalStorage) {
    printLoop(all)
 }
 
-deletebtn.addEventListener("dblclick",function(){
+deletebtn.addEventListener("click",function(){
    localStorage.clear()
    all = []
    printLoop(all)
