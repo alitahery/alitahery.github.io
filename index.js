@@ -95,7 +95,7 @@ class ascii{
             }
             
         }
-        this.#ctx.font="5px sans-serif"
+        // this.#ctx.font="5px sans-serif"
 
     }
     #drawAss(){
