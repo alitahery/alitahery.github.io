@@ -128,6 +128,6 @@ image1.onload = function initialize() {
     effect.draw(5)
 }
 function change(){
-    ctx.font = "1px vardina"//parseInt(range.value) +"px vardana"
+    ctx.font = "3px vardina"//parseInt(range.value) +"px vardana"
     effect.draw(parseInt(range.value))
 }
