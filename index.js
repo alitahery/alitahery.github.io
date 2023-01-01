@@ -44,7 +44,7 @@ class ascii{
         this.#height = height
         this.#width = width
         this.#ctx.drawImage(image1,0,0,image1.width,image1.height)
-        this.#pixels = this.#ctx.getImageData(0,0,this.#width,this.#height)
+        this.#pixels = this.#ctx.getImageData(0,0,co,co)
     }
     
 
@@ -116,9 +116,14 @@ class ascii{
 }
 
 let effect
+let co
 image1.onload = function initialize() {
-    canvas.width = image1.width;
-    canvas.height = image1.height;
+    if(image1.width>=image1.height){
+        co = image1.height
+    }
+    else co = image1.width
+    canvas.width = co
+    canvas.height = co
     effect = new ascii(ctx,image1.width,image1.height)
     effect.draw(5)
 }
