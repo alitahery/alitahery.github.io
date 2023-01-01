@@ -63,7 +63,7 @@ class ascii{
             // else if(g<185) return char[12]
             // else if(g<190) return char[14]
             else if(g<195) return char[15]
-            else if(g<255) return char[15]
+            else if(g<=255) return char[15]
             // else if(g<250) return char[0]
             // else if (g<80)return char[1]
                 
