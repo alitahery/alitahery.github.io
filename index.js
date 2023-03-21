@@ -98,13 +98,11 @@ class ascii{
         // this.#ctx.font="5px sans-serif"
 
     }
-    #drawAss(){
-        this.#ctx.clearRect(0,0,this.#width,this.#height)
-        for (let i = 0; i < this.#imageCellArray.length; i++) {
-            this.#imageCellArray[i].draw(this.#ctx)
-            
-        }
+    #drawAss() {
+            this.#ctx.clearRect(0, 0, this.#width, this.#height);
+                this.#imageCellArray.forEach(cell => cell.draw(this.#ctx));
     }
+    
     draw(size){
         this.#scan(size)
         this.#drawAss()
