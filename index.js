@@ -1,6 +1,8 @@
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext('2d');
 const range = document.getElementById("res")
+const color = document.getElementById("radio")
+color.addEventListener('checkbox',change)
 range.addEventListener("change",change)
 function encodeImageFileAsURL(element) {
     var file = element.files[0];
@@ -16,7 +18,6 @@ const image1 = new Image();
 const char = [" ", '░', "~", ":", "+", "=", "o", "*", "▒", "^", "%", "#", "░", "$", "▒", "▓"]
 
 
-// data:image/png;base64,
 class Cell{
     constructor(x,y,symbols,color){
         this.x=x
@@ -25,8 +26,9 @@ class Cell{
         this.color = color
 
     }
-    draw(ctx){
-        ctx.fillStyle = this.color
+    draw(ctx,chkval){
+        (chkval?ctx.fillStyle = this.color:ctx.fillStyle =blank)
+        
         ctx.fillText(this.symbols,this.x,this.y)
 
     }
@@ -46,7 +48,7 @@ class ascii{
         this.#ctx.drawImage(image1,0,0,image1.width,image1.height)
         this.#pixels = this.#ctx.getImageData(0,0,co,co)
     }
-    
+
 
     #convertToSymbol(g){
             // if(g>250) return char[0]
@@ -70,7 +72,7 @@ class ascii{
                 
             
     }
-    #scan(size){
+    #scan(size,col){
         this.#imageCellArray = []
         for (let y = 0; y < this.#pixels.height; y+=size) {
             for(let x = 0; x < this.#pixels.width;x += size){
@@ -78,7 +80,7 @@ class ascii{
                 let posy = y*4
                 let pos  = (posy*this.#pixels.height)+posx 
 
-
+                
                 // const red=this.#pixels.data[pos]*0.2989
                 // const blue=this.#pixels.data[pos+1]*0.114
                 // const green=this.#pixels.data[pos+2]*0.5870
@@ -99,13 +101,13 @@ class ascii{
 
     }
     #drawAss() {
-            this.#ctx.clearRect(0, 0, this.#width, this.#height);
-                this.#imageCellArray.forEach(cell => cell.draw(this.#ctx));
+        this.#ctx.clearRect(0, 0, this.#width, this.#height);
+        this.#imageCellArray.forEach(cell => cell.draw(this.#ctx,chkval));
     }
     
-    draw(size){
+    draw(size,chkval=color.value){
         this.#scan(size)
-        this.#drawAss()
+        this.#drawAss(chkval)
         console.log(this.#pixels);
 
     }
@@ -125,7 +127,8 @@ image1.onload = function initialize() {
     effect = new ascii(ctx,image1.width,image1.height)
     effect.draw(5)
 }
-function change(){
+function change(e){
+    console.log(e)
     ctx.font = "3px vardina"//parseInt(range.value) +"px vardana"
     effect.draw(parseInt(range.value))
 }
