@@ -27,7 +27,7 @@ class Cell{
 
     }
     draw(ctx,chkval){
-        (chkval?ctx.fillStyle = this.color:ctx.fillStyle =blank)
+        (chkval?ctx.fillStyle = this.color:ctx.fillStyle =white)
         
         ctx.fillText(this.symbols,this.x,this.y)
 
@@ -72,7 +72,7 @@ class ascii{
                 
             
     }
-    #scan(size,col){
+    #scan(size){
         this.#imageCellArray = []
         for (let y = 0; y < this.#pixels.height; y+=size) {
             for(let x = 0; x < this.#pixels.width;x += size){
@@ -100,7 +100,7 @@ class ascii{
         // this.#ctx.font="5px sans-serif"
 
     }
-    #drawAss() {
+    #drawAss(chkval) {
         this.#ctx.clearRect(0, 0, this.#width, this.#height);
         this.#imageCellArray.forEach(cell => cell.draw(this.#ctx,chkval));
     }
@@ -129,6 +129,6 @@ image1.onload = function initialize() {
 }
 function change(e){
     console.log(e)
-    ctx.font = "3px vardina"//parseInt(range.value) +"px vardana"
+    ctx.font = "3px vardina"
     effect.draw(parseInt(range.value))
 }
