@@ -27,7 +27,7 @@ class Cell{
 
     }
     draw(ctx,chkval){
-        (chkval?ctx.fillStyle = this.color:ctx.fillStyle =white)
+        ctx.fillStyle = this.color)
         
         ctx.fillText(this.symbols,this.x,this.y)
 
@@ -46,7 +46,7 @@ class ascii{
         this.#height = height
         this.#width = width
         this.#ctx.drawImage(image1,0,0,image1.width,image1.height)
-        this.#pixels = this.#ctx.getImageData(0,0,co,co)
+        this.#pixels = this.#ctx.getImageData(0,0,image1.width , image1.height)
     }
 
 
@@ -100,7 +100,7 @@ class ascii{
         // this.#ctx.font="5px sans-serif"
 
     }
-    
+
     #drawAss() {
         this.#ctx.rect(0,0,this.#width,this.#height)
         this.#ctx.clearRect(0, 0, this.#width, this.#height);
