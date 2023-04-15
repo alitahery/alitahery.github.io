@@ -2,17 +2,9 @@ const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext('2d');
 const range = document.getElementById("res")
 const color = document.getElementById("radio")
-color.addEventListener('checkbox',change)
+// color.addEventListener('checkbox',change)
 range.addEventListener("change",change)
-function encodeImageFileAsURL(element) {
-    var file = element.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = function() {
-    image1.src = `${reader.result}`
-    }
-    
-}
+
 
 const image1 = new Image();
 const char = [" ", '░', "~", ":", "+", "=", "o", "*", "▒", "^", "%", "#", "░", "$", "▒", "▓"]
@@ -27,7 +19,7 @@ class Cell{
 
     }
     draw(ctx,chkval){
-        ctx.fillStyle = this.color)
+        ctx.fillStyle = this.color
         
         ctx.fillText(this.symbols,this.x,this.y)
 
@@ -125,8 +117,16 @@ image1.onload = function initialize() {
     effect = new ascii(ctx,image1.width,image1.height)
     effect.draw(5)
 }
-function change(e){
-    console.log(e)
+function change(){
     ctx.font = "7px vardina"
     effect.draw(parseInt(range.value))
+}
+function encodeImageFileAsURL(element) {
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = function() {
+    image1.src = `${reader.result}`
+    }
+    
 }
