@@ -78,7 +78,7 @@ class ascii{
             for(let x = 0; x < this.#pixels.width;x += size){
                 let posx = x*4
                 let posy = y*4
-                let pos  = (posy*this.#pixels.height)+posx 
+                let pos  = (posy*this.#pixels.width)+posx 
 
                 
                 // const red=this.#pixels.data[pos]*0.2989
@@ -118,17 +118,13 @@ class ascii{
 let effect
 let co
 image1.onload = function initialize() {
-    if(image1.width>=image1.height){
-        co = image1.height
-    }
-    else co = image1.width
-    canvas.width = co
-    canvas.height = co
+    canvas.width = image1.width 
+    canvas.height = image1.height 
     effect = new ascii(ctx,image1.width,image1.height)
     effect.draw(5)
 }
 function change(e){
     console.log(e)
-    ctx.font = "3px vardina"
+    ctx.font = "7px vardina"
     effect.draw(parseInt(range.value))
 }
