@@ -100,14 +100,16 @@ class ascii{
         // this.#ctx.font="5px sans-serif"
 
     }
-    #drawAss(chkval) {
+    
+    #drawAss() {
+        this.#ctx.rect(0,0,this.#width,this.#height)
         this.#ctx.clearRect(0, 0, this.#width, this.#height);
-        this.#imageCellArray.forEach(cell => cell.draw(this.#ctx,chkval));
+        this.#imageCellArray.forEach(cell => cell.draw(this.#ctx));
     }
     
-    draw(size,chkval=color.value){
+    draw(size){
         this.#scan(size)
-        this.#drawAss(chkval)
+        this.#drawAss()
         console.log(this.#pixels);
 
     }
